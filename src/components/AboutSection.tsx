@@ -6,26 +6,50 @@ import { Target, BookOpen, Rocket } from "lucide-react";
 const cards = [
   {
     icon: Target,
-    title: "Team Goal",
-    subtitle: "우리의 목표",
-    description:
-      "실무에서 바로 통하는 개발자로 성장합니다. 이론만이 아닌, 실제 프로젝트 경험을 통해 포트폴리오를 만들어가요.",
+    title: (<b>Team Goal</b>),
+    subtitle: (<b>팀 목표</b>),
+    description:(
+      <>
+        <br />
+        <b>1학년이 개발하는 과정을 즐겁게 배울 수 있도록 돕고,</b>
+        <br />
+        <b>수업에서 다루는 이론만이 아닌, 실제 프로젝트를 경험하며 실무에 필요한 능력을 갖춘 인재로 함께 성장하기!</b>
+      </>
+    ),
     gradient: "from-blue-400/20 to-cyan-400/20",
   },
   {
     icon: BookOpen,
-    title: "Rules",
-    subtitle: "활동 규칙",
-    description:
-      "매주 정기 모임 참석, 팀 프로젝트 필수 참여, 서로 존중하는 커뮤니케이션. 작은 약속이 큰 성장을 만듭니다.",
+    title: (<b>Rules</b>),
+    subtitle: (<b>활동규칙</b>),
+    description:(
+      <>
+        <br />
+        <b>1, 서로 존중하고 배려하는 분위기 조성하기</b>
+        <br />
+        <b>2, 적극적으로 참여하고 소통하기</b>
+        <br />
+        <b>3, 모르는 것에 대해 두려워하지 말고 물어보기 !!!</b>
+      </>
+    ),
     gradient: "from-purple-400/20 to-pink-400/20",
   },
   {
     icon: Rocket,
-    title: "Roadmap",
-    subtitle: "성장 로드맵",
-    description:
-      "기초 스터디 → 팀 프로젝트 → 공모전 참가 → 멘토링. 단계별로 성장할 수 있는 체계적인 커리큘럼을 제공해요.",
+    title: (<b>Roadmap</b>),
+    subtitle: (<b>성장 로드맵</b>),
+    description:(
+      <>
+        <b>1학기: 기초스터디 및 팀원들과 친해지기🎉여름방학: We-meet 미니 프로젝트💻</b>
+        <br/>
+        <b>2학기: 팀 프로젝트 구상/개발👨‍💻</b>
+        <br/>
+        <b>겨울방학: We-meet 프로젝트 완성👏</b>
+        <br/>
+        <b>* 꾸준히 팀원들 및 동기들과 해커톤 및 경진대회 활동 *</b>
+        <br/>
+      </>
+    ),
     gradient: "from-orange-400/20 to-yellow-400/20",
   },
 ];
@@ -44,13 +68,13 @@ const AboutSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
-            About Us
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+            <span className="gradient-text">About Us</span>
           </h2>
           <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-            소인배는 소수정예로 운영되는 개발 동아리입니다.
+            소인배는 단순히 개발만 하는게 아닌,
             <br />
-            함께 성장하고, 함께 도전합니다.
+            함께 성장하고, 함께 도전하는 팀입니다.
           </p>
         </motion.div>
 

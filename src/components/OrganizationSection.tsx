@@ -2,29 +2,53 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const leader = {
-  name: "김소인",
-  position: "팀장 / Full-Stack",
-  intro: "함께 성장하는 개발 문화를 만들어갑니다",
-  avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+  name: "김동욱",
+  position: "팀장 / AI",
+  intro: (
+    <>
+        <b>모두가 함께 성장하는 팀을 꿈꿉니다</b>
+        <br/>
+        <b>LLM 파이프라인 설계 및 응답 성능 최적화</b>
+    </>
+  ),
+  avatar: "/donggle.png",
 };
 
 const members = [
   {
-    name: "이프론",
-    position: "Frontend Lead",
-    intro: "사용자 경험을 최우선으로 생각해요",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face",
+    name: "김영광",
+    position: "Backend",
+    intro: (
+      <>
+          <b>안정적인 서버 아키텍처를 설계</b>
+          <br/>
+          <b>Frontend와 협업을 통해 기술 구현</b>
+      </>
+    ),
+    avatar: "/glory.png",
   },
   {
-    name: "박백엔",
-    position: "Backend Lead",
-    intro: "안정적인 서버 아키텍처를 설계합니다",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+    name: "장민호",
+    position: "Security",
+    intro: (
+      <>
+          <b>안전한 서버를 구축하고</b>
+          <br/>
+          <b>시스템 보안을 책임</b>
+      </>
+    ),
+    avatar: "/mino2.jpeg",
   },
   {
-    name: "최에이아이",
-    position: "AI/ML Lead",
-    intro: "데이터로 새로운 가치를 발견해요",
+    name: "김도형",
+    position: "Frontend",
+    intro: (
+      <>
+          <b>직관적인 UI와 사용자 경험UX를</b>
+          <br/>
+          <b>기반으로 디자인</b>
+      </>
+    ),
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
   },
 ];
@@ -49,10 +73,10 @@ const MemberCard = ({ member, isLeader = false, delay = 0 }: MemberCardProps) =>
       transition={{ duration: 0.6, delay }}
       whileHover={{ y: -8 }}
       className={`glass-card p-6 text-center group cursor-pointer ${
-        isLeader ? "md:w-72" : "w-full md:w-64"
+        isLeader ? "md:w-80" : "w-full md:w-72"
       }`}
     >
-      <div className="relative mb-5 mx-auto w-24 h-24 md:w-28 md:h-28">
+      <div className="relative mb-5 mx-auto w-24 h-24 md:w-40 md:h-40">
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-deep-blue to-deep-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
         <img
           src={member.avatar}
@@ -91,11 +115,11 @@ const OrganizationSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
-            Our Team
+          <h2 className="text-4xl md:text-5xl font-black mb-4">
+            <span className="gradient-text">Organization</span>
           </h2>
           <p className="text-lg text-foreground/60">
-            소인배를 이끌어가는 핵심 멤버들을 소개합니다
+            <b>열적 가득한 소인배 핵심 멤버들을 소개합니다!</b>
           </p>
         </motion.div>
 

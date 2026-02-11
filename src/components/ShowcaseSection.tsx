@@ -3,35 +3,53 @@ import { motion, useInView } from "framer-motion";
 import { Trophy, Star, Rocket, ChevronLeft, ChevronRight } from "lucide-react";
 
 const achievements = [
-  { icon: Trophy, label: "공모전 수상", count: 12 },
-  { icon: Star, label: "프로젝트 완료", count: 28 },
-  { icon: Rocket, label: "배출 개발자", count: 45 },
+  { icon: Trophy, label: "공모전 참가 ", count: 20 },
+  { icon: Star, label: "프로젝트 완료", count: 20 },
+  { icon: Rocket, label: "배출 개발자", count: 20 },
 ];
 
 const projects = [
   {
-    title: "AI 챗봇 서비스",
-    award: "교내 해커톤 대상",
-    description: "GPT 기반 학교 생활 도우미 챗봇",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop",
+    title: "성균관대학교 주관 사회공헌 아이디어 경진대회",
+    award: "동 상",
+    description: "컴퓨터 비전을 활용한 독거노인 낙상 감지 시스템",
+    image: "/aib.jpeg",
   },
   {
-    title: "캠퍼스 매칭 앱",
-    award: "SW 창업대회 우수상",
-    description: "관심사 기반 스터디 매칭 플랫폼",
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop",
+    title: "SW 창업 아이디어 경진대회",
+    award: "우수상",
+    description: "AI 기반 맞춤형 스마트 약통",
+    image: "/SW_H.jpeg",
   },
   {
-    title: "보안 취약점 분석 도구",
-    award: "정보보안 경진대회 입상",
-    description: "웹 애플리케이션 취약점 자동 스캔 도구",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop",
+    title: "AUTO HACK 자동차 해킹방어 대회",
+    award: "예선 통과",
+    description: "자동차 해킹방어 기술 습득 및 실습",
+    image: "/autohack.jpeg",
   },
   {
-    title: "실시간 협업 에디터",
-    award: "오픈소스 컨트리뷰션",
-    description: "마크다운 기반 실시간 문서 협업 도구",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop",
+    title: "2025 AI EXPO 코엑스",
+    award: "AI EXPO 관람",
+    description: "최신 AI 기술 및 트렌드 탐색",
+    image: "/aiexpo.jpeg",
+  },
+  {
+    title: "2025 CO-WEEK",
+    award: "칭평 알펜시아 리조트 워크숍",
+    description: "첨단분야 혁신 융합대학 18개 컨소시엄 체험",
+    image: "/coweek.jpeg",
+  },
+  {
+    title: "NVIDIA 자연어 처리 기술 교육 수료",
+    award: "NVIDIA 수료증",
+    description: "트랜스포머를 활용한 자연어 처리 기술 교육 이수",
+    image: "/Nvidia.jpeg",
+  },
+  {
+    title: "호남 정보보안 해커톤",
+    award: "예선 통과",
+    description: "다양한 정보보안 기술 활용 및 문제풀이",
+    image: "/hackjunnam.jpeg",
   },
 ];
 
@@ -96,11 +114,11 @@ const ShowcaseSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
-            Hall of Fame
+          <h2 className="text-4xl md:text-5xl font-black mb-4">
+            <span className="gradient-text">Showcase</span>
           </h2>
-          <p className="text-lg text-foreground/60">
-            소인배의 자랑스러운 성과들
+          <p className="text-lg text-foreground/60 font-black" >
+            팀원들이 이룬 빛나는 성과를 소개합니다.
           </p>
         </motion.div>
 
@@ -124,7 +142,7 @@ const ShowcaseSection = () => {
         </div>
 
         {/* Project Carousel */}
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative max-w-6xl mx-auto">
           <div className="overflow-hidden rounded-3xl">
             <motion.div
               animate={{ x: `-${currentSlide * 100}%` }}
@@ -135,14 +153,14 @@ const ShowcaseSection = () => {
                 <div key={index} className="min-w-full">
                   <div className="glass-card overflow-hidden">
                     <div className="md:flex">
-                      <div className="md:w-1/2">
+                      <div className="md:w-2/3">
                         <img
-                          src={project.image}
-                          alt={project.title}
-                          className="w-full h-48 md:h-64 object-cover"
+                          src={projects[currentSlide].image}
+                          alt={projects[currentSlide].title}
+                          className="w-full h-64 md:h-96 object-cover"
                         />
                       </div>
-                      <div className="p-6 md:p-8 md:w-1/2 flex flex-col justify-center">
+                      <div className="p-6 md:p-8 md:w-1/3 flex flex-col justify-center">
                         <span className="inline-block px-3 py-1 bg-gradient-to-r from-deep-blue to-deep-purple text-white text-xs font-bold rounded-full mb-3 w-fit">
                           {project.award}
                         </span>

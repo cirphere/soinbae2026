@@ -31,11 +31,11 @@ const TimelineSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
-            Timeline
+          <h2 className="text-4xl md:text-5xl font-black mb-4">
+            <span className="gradient-text">Timeline</span>
           </h2>
-          <p className="text-lg text-foreground/60">
-            우리의 발자취와 앞으로의 계획
+          <p className="text-lg text-foreground/60 font-extrabold">
+            과거의 성과를 바탕으로 더 나은 팀을 만들어 나갑니다
           </p>
         </motion.div>
 

@@ -40,86 +40,74 @@ const HeroSection = () => {
         className="absolute top-1/3 right-1/3 w-48 h-48 bg-pastel-pink/30 rounded-full blur-3xl"
       />
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-6">
+      {/* Main content */}
+      <div className="relative z-10 text-center px-4">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <motion.p
+          <motion.p 
+            className="text-lg md:text-2xl text-muted-foreground mb-4 italic font-medium"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-lg md:text-xl text-foreground/70 mb-4 font-medium"
+            transition={{ delay: 0.3 }}
           >
-            대학교 코딩 동아리
+            <b>AIM? AIM!</b>
           </motion.p>
           
-          <motion.h1
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
-            className="text-7xl md:text-9xl font-black gradient-text mb-6 tracking-tight"
+          <motion.h1 
+            className="text-7xl md:text-9xl font-black gradient-text mb-6 tracking-tight italic drop-shadow-xl"
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8, type: "spring", stiffness: 100 }}
           >
-            소인배
+            SOINBAE
           </motion.h1>
           
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-            className="text-base md:text-lg text-foreground/60 mb-2"
+          <motion.p 
+            className="text-xl md:text-2xl text-foreground/80 font-light max-w-2xl mx-auto mb-2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
           >
-            Small but Mighty Developers
+            <span className="font-extrabold text-primary">소</span>프트웨어 & AI
+            <span className="font-extrabold text-accent"> 인</span>재 
+            <span className="font-extrabold text-violet-400">배</span>양
           </motion.p>
           
-          <motion.p
+          <motion.p 
+            className="text-muted-foreground max-w-lg mx-auto font-medium"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 0.6 }}
-            className="text-xl md:text-2xl text-foreground/80 font-medium max-w-lg mx-auto"
+            transition={{ delay: 0.7 }}
           >
-            소수정예로 인사이트를 나누고,
-            <br />
-            함께 성장하는 개발자 커뮤니티
+            함께 성장하고, 함께 만들어가는 우리들의 개발 여정
           </motion.p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.3, duration: 0.6 }}
-          className="mt-12"
-        >
-          <motion.button
-            onClick={scrollToAbout}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="glass-card px-8 py-4 font-semibold text-foreground hover:bg-white/70 transition-all duration-300"
-          >
-            더 알아보기
-          </motion.button>
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        transition={{ delay: 1.2, duration: 0.6 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
       >
-        <motion.button
-          onClick={scrollToAbout}
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="text-foreground/50 hover:text-foreground/80 transition-colors"
+       <motion.button
+        onClick={scrollToAbout}
+        className="group flex flex-col items-center gap-2 text-foreground/70 hover:text-foreground transition-colors cursor-pointer"
+        whileHover={{ y: 5 }}
+      >
+        <span className="text-sm font-medium">더 알아보기</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ChevronDown size={32} />
-        </motion.button>
-      </motion.div>
-    </section>
+          <ChevronDown className="w-6 h-6" />
+        </motion.div>
+      </motion.button>
+    </motion.div>
+  </section>
   );
 };
 

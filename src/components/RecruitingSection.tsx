@@ -2,30 +2,52 @@ import { useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef } from "react";
 import {
-  HelpCircle,
   Brain,
   Layout,
   Server,
   Shield,
   X,
   CheckCircle,
+  // HelpCircle은 더 이상 사용하지 않아 제거했습니다.
+  Users, // 협업 능력 아이콘
+  Flame, // 열정 아이콘 (lucide-react에 없으면 다른걸로 대체 가능)
+  BookOpen, // 배움 아이콘
 } from "lucide-react";
 
+// 1. 인재상 데이터 수정 (아이콘 변경 및 reveal 필드를 title로 변경)
 const talents = [
   {
-    icon: HelpCircle,
-    reveal: "🤝 협업 능력",
-    description: "함께 일하는 것을 즐기고, 의견을 경청할 줄 아는 사람",
+    icon: Users, // 적절한 아이콘으로 교체
+    title: "협업 능력",
+    description:  (
+      <>
+          <b>팀원들과 함께 소통하는 것을 즐기고</b>
+          <br/>
+          <b>의견을 경청할 줄 아는 사람</b>
+      </>
+    ),
   },
   {
-    icon: HelpCircle,
-    reveal: "🔥 열정과 끈기",
-    description: "어려운 문제도 포기하지 않고 끝까지 해결하려는 의지",
+    icon: Flame, // 적절한 아이콘으로 교체 (만약 flame이 없다면 Zap 등으로 대체하세요)
+    title: "열정과 끈기",
+    description: (
+      <>
+          <b>실패하는 것을 두려워하지 않으며</b>
+          <br/>
+          <b>포기하지 않고 끝까지 해보려는의지</b>
+      </>
+    ),
   },
   {
-    icon: HelpCircle,
-    reveal: "📚 배움의 자세",
-    description: "새로운 것을 배우는 것에 거부감이 없고 성장을 추구하는 사람",
+    icon: BookOpen, // 적절한 아이콘으로 교체
+    title: "호기심",
+    description: (
+      <>
+          <b>새로운 기술과 트렌드에 관심이 많으며</b>
+          <br/>
+          <b>지속적인 성장을 추구하는 사람</b>
+      </>
+    ),
   },
 ];
 
@@ -91,8 +113,8 @@ const tracks = [
 const RecruitingSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [hoveredTalent, setHoveredTalent] = useState<number | null>(null);
-  const [selectedTrack, setSelectedTrack] = useState<string | null>(null);
+  // hoveredTalent 상태는 더 이상 필요하지 않아 제거했습니다.
+  const [selectedTrack, setSelectedTrack] = useState(null);
 
   const selectedTrackData = tracks.find((t) => t.id === selectedTrack);
 
@@ -106,18 +128,18 @@ const RecruitingSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
-            Who We Want
+          <h2 className="text-4xl md:text-5xl font-black mb-4">
+            <span className="gradient-text">Who We Want?</span>
           </h2>
           <p className="text-lg text-foreground/60">
             소인배가 찾는 인재상과 트랙을 알아보세요
           </p>
         </motion.div>
 
-        {/* Talent Cards */}
+        {/* Talent Cards (수정됨) */}
         <div className="mb-20">
-          <h3 className="text-2xl font-bold text-center mb-8 text-foreground">
-            💫 인재상
+          <h3 className="text-2xl font-extrabold text-center mb-8 text-foreground/60">
+            이런 사람을 원해요 !!
           </h3>
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {talents.map((talent, index) => (
@@ -126,49 +148,26 @@ const RecruitingSection = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                onMouseEnter={() => setHoveredTalent(index)}
-                onMouseLeave={() => setHoveredTalent(null)}
-                className="glass-card p-8 cursor-pointer group relative overflow-hidden min-h-[200px] flex flex-col items-center justify-center"
+                // 2. 호버 시 '들썩이는' 효과 추가
+                whileHover={{ y: -8 }}
+                className="glass-card p-8 cursor-pointer group min-h-[200px] flex flex-col items-center justify-center text-center transition-all duration-300"
               >
-                <AnimatePresence mode="wait">
-                  {hoveredTalent === index ? (
-                    <motion.div
-                      key="revealed"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.8 }}
-                      className="text-center"
-                    >
-                      <p className="text-2xl font-bold gradient-text mb-3">
-                        {talent.reveal}
-                      </p>
-                      <p className="text-sm text-foreground/70">
-                        {talent.description}
-                      </p>
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="mystery"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.8 }}
-                      className="text-center"
-                    >
-                      <div className="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                        <HelpCircle className="w-10 h-10 text-gray-500 animate-pulse" />
-                      </div>
-                      <p className="text-foreground/50 text-sm">
-                        호버해서 확인하기
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* 3. 복잡한 AnimatePresence 제거하고 단순하게 아이콘+텍스트 배치 */}
+                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <talent.icon className="w-8 h-8 text-primary" />
+                </div>
+                <h4 className="text-xl font-bold mb-3 text-foreground">
+                  {talent.title}
+                </h4>
+                <p className="text-sm text-foreground/70 leading-relaxed">
+                  {talent.description}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
 
-        {/* Tracks Grid */}
+        {/* Tracks Grid (기존 유지) */}
         <div>
           <h3 className="text-2xl font-bold text-center mb-8 text-foreground">
             🎯 트랙 선택
@@ -197,7 +196,7 @@ const RecruitingSection = () => {
           </div>
         </div>
 
-        {/* Track Modal */}
+        {/* Track Modal (기존 유지) */}
         <AnimatePresence>
           {selectedTrack && selectedTrackData && (
             <motion.div
@@ -212,7 +211,7 @@ const RecruitingSection = () => {
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.9, opacity: 0 }}
                 onClick={(e) => e.stopPropagation()}
-                className="glass-card p-8 max-w-lg w-full max-h-[80vh] overflow-y-auto relative"
+                className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-8 max-w-lg w-full max-h-[80vh] overflow-y-auto relative text-left border border-white/20"
               >
                 <button
                   onClick={() => setSelectedTrack(null)}
