@@ -6,9 +6,9 @@ const leader = {
   position: "팀장 / AI",
   intro: (
     <>
-        <b>모두가 함께 성장하는 팀을 꿈꿉니다</b>
-        <br/>
-        <b>LLM 파이프라인 설계 및 응답 성능 최적화</b>
+      <b>모두가 함께 성장하는 팀을 꿈꿉니다</b>
+      <br />
+      <b>LLM 파이프라인 설계 및 응답 성능 최적화</b>
     </>
   ),
   avatar: "/donggle.png",
@@ -20,9 +20,9 @@ const members = [
     position: "Backend",
     intro: (
       <>
-          <b>안정적인 서버 아키텍처를 설계</b>
-          <br/>
-          <b>Frontend와 협업을 통해 기술 구현</b>
+        <b>안정적인 서버 아키텍처를 설계</b>
+        <br />
+        <b>Frontend와 협업을 통해 기술 구현</b>
       </>
     ),
     avatar: "/glory.png",
@@ -32,9 +32,9 @@ const members = [
     position: "Security",
     intro: (
       <>
-          <b>안전한 서버를 구축하고</b>
-          <br/>
-          <b>시스템 보안을 책임</b>
+        <b>안전한 서버를 구축하고</b>
+        <br />
+        <b>시스템 보안을 책임</b>
       </>
     ),
     avatar: "/mino2.jpeg",
@@ -44,12 +44,12 @@ const members = [
     position: "Frontend",
     intro: (
       <>
-          <b>직관적인 UI와 사용자 경험UX를</b>
-          <br/>
-          <b>기반으로 디자인</b>
+        <b>직관적인 UI와 사용자 경험UX를</b>
+        <br />
+        <b>기반으로 디자인</b>
       </>
     ),
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
+    avatar: "/circle.jpg",
   },
 ];
 
@@ -64,7 +64,11 @@ interface MemberCardProps {
   delay?: number;
 }
 
-const MemberCard = ({ member, isLeader = false, delay = 0 }: MemberCardProps) => {
+const MemberCard = ({
+  member,
+  isLeader = false,
+  delay = 0,
+}: MemberCardProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}

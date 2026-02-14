@@ -51,6 +51,12 @@ const projects = [
     description: "다양한 정보보안 기술 활용 및 문제풀이",
     image: "/hackjunnam.jpeg",
   },
+  {
+    title: "클라우드 기반 생성형 AI 서비스 개발 경진대회",
+    award: "최우수상",
+    description: "클라우드 환경에서 생성형 AI 서비스 개발 및 최적화",
+    image: "/nhn_cloud.jpg",
+  },
 ];
 
 interface CounterProps {
@@ -117,7 +123,7 @@ const ShowcaseSection = () => {
           <h2 className="text-4xl md:text-5xl font-black mb-4">
             <span className="gradient-text">Showcase</span>
           </h2>
-          <p className="text-lg text-foreground/60 font-black" >
+          <p className="text-lg text-foreground/60 font-black">
             팀원들이 이룬 빛나는 성과를 소개합니다.
           </p>
         </motion.div>
@@ -155,8 +161,8 @@ const ShowcaseSection = () => {
                     <div className="md:flex">
                       <div className="md:w-2/3">
                         <img
-                          src={projects[currentSlide].image}
-                          alt={projects[currentSlide].title}
+                          src={project.image}
+                          alt={project.title}
                           className="w-full h-64 md:h-96 object-cover"
                         />
                       </div>
