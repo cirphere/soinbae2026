@@ -57,6 +57,12 @@ const projects = [
     description: "클라우드 환경에서 생성형 AI 서비스 개발 및 최적화",
     image: "/nhn_cloud.jpg",
   },
+  {
+    title: "J-curve Next 스타트업 부트캡프",
+    award: "대상",
+    description: "",
+    image: "/J-curve.jpg",
+  },
 ];
 
 interface CounterProps {
@@ -98,6 +104,13 @@ const ShowcaseSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    projects.forEach((project) => {
+      const img = new Image();
+      img.src = project.image;
+    });
+  }, []);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % projects.length);
@@ -153,7 +166,8 @@ const ShowcaseSection = () => {
             <motion.div
               animate={{ x: `-${currentSlide * 100}%` }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="flex"
+              className="flex transform-gpu"
+              style={{ willChange: "transform" }}
             >
               {projects.map((project, index) => (
                 <div key={index} className="min-w-full">

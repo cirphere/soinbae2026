@@ -29,7 +29,19 @@ const members = [
   },
   {
     name: "장민호",
-    position: "Security",
+    position: "Backend",
+    intro: (
+      <>
+        <b>안정적인 서버 아키텍처를 설계</b>
+        <br />
+        <b>데이터베이스 최적화 및 관리</b>
+      </>
+    ),
+    avatar: "/mino2.jpeg",
+  },
+  {
+    name: "김도형",
+    position: "Infra, Security",
     intro: (
       <>
         <b>안전한 서버를 구축하고</b>
@@ -37,19 +49,19 @@ const members = [
         <b>시스템 보안을 책임</b>
       </>
     ),
-    avatar: "/mino2.jpeg",
+    avatar: "/circle.jpg",
   },
   {
-    name: "김도형",
+    name: "이환희",
     position: "Frontend",
     intro: (
       <>
-        <b>직관적인 UI와 사용자 경험UX를</b>
+        <b>사용자 친화적인 인터페이스를 개발</b>
         <br />
-        <b>기반으로 디자인</b>
+        <b>팀의 프론트엔드 개발을 담당</b>
       </>
     ),
-    avatar: "/circle.jpg",
+    avatar: "/환희.jpg",
   },
 ];
 
@@ -57,7 +69,7 @@ interface MemberCardProps {
   member: {
     name: string;
     position: string;
-    intro: string;
+    intro: string | JSX.Element;
     avatar: string;
   };
   isLeader?: boolean;
