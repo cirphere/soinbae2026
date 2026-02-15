@@ -6,23 +6,26 @@ import { Target, BookOpen, Rocket } from "lucide-react";
 const cards = [
   {
     icon: Target,
-    title: (<b>Team Goal</b>),
-    subtitle: (<b>팀 목표</b>),
-    description:(
+    title: <b>Team Goal</b>,
+    subtitle: <b>팀 목표</b>,
+    description: (
       <>
         <br />
         <b>1학년이 개발하는 과정을 즐겁게 배울 수 있도록 돕고,</b>
         <br />
-        <b>수업에서 다루는 이론만이 아닌, 실제 프로젝트를 경험하며 실무에 필요한 능력을 갖춘 인재로 함께 성장하기!</b>
+        <b>
+          수업에서 다루는 이론만이 아닌, 실제 프로젝트를 경험하며 실무에 필요한
+          능력을 갖춘 인재로 함께 성장하기!
+        </b>
       </>
     ),
     gradient: "from-blue-400/20 to-cyan-400/20",
   },
   {
     icon: BookOpen,
-    title: (<b>Rules</b>),
-    subtitle: (<b>활동규칙</b>),
-    description:(
+    title: <b>Rules</b>,
+    subtitle: <b>활동규칙</b>,
+    description: (
       <>
         <br />
         <b>1, 서로 존중하고 배려하는 분위기 조성하기</b>
@@ -36,18 +39,21 @@ const cards = [
   },
   {
     icon: Rocket,
-    title: (<b>Roadmap</b>),
-    subtitle: (<b>성장 로드맵</b>),
-    description:(
+    title: <b>Roadmap</b>,
+    subtitle: <b>성장 로드맵</b>,
+    description: (
       <>
-        <b>1학기: 기초스터디 및 팀원들과 친해지기🎉여름방학: We-meet 미니 프로젝트💻</b>
-        <br/>
+        <b>
+          1학기: 기초스터디 및 팀원들과 친해지기🎉여름방학: We-meet 미니
+          프로젝트💻
+        </b>
+        <br />
         <b>2학기: 팀 프로젝트 구상/개발👨‍💻</b>
-        <br/>
+        <br />
         <b>겨울방학: We-meet 프로젝트 완성👏</b>
-        <br/>
+        <br />
         <b>* 꾸준히 팀원들 및 동기들과 해커톤 및 경진대회 활동 *</b>
-        <br/>
+        <br />
       </>
     ),
     gradient: "from-orange-400/20 to-yellow-400/20",
@@ -81,7 +87,7 @@ const AboutSection = () => {
         <div className="grid md:grid-cols-3 gap-6 md:gap-8">
           {cards.map((card, index) => (
             <motion.div
-              key={card.title}
+              key={index}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15 }}

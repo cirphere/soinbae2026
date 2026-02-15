@@ -6,9 +6,9 @@ const leader = {
   position: "팀장 / AI",
   intro: (
     <>
-        <b>모두가 함께 성장하는 팀을 꿈꿉니다</b>
-        <br/>
-        <b>LLM 파이프라인 설계 및 응답 성능 최적화</b>
+      <b>모두가 함께 성장하는 팀을 꿈꿉니다</b>
+      <br />
+      <b>LLM 파이프라인 설계 및 응답 성능 최적화</b>
     </>
   ),
   avatar: "/donggle.png",
@@ -20,36 +20,48 @@ const members = [
     position: "Backend",
     intro: (
       <>
-          <b>안정적인 서버 아키텍처를 설계</b>
-          <br/>
-          <b>Frontend와 협업을 통해 기술 구현</b>
+        <b>안정적인 서버 아키텍처를 설계</b>
+        <br />
+        <b>Frontend와 협업을 통해 기술 구현</b>
       </>
     ),
     avatar: "/glory.png",
   },
   {
     name: "장민호",
-    position: "Security",
+    position: "Backend",
     intro: (
       <>
-          <b>안전한 서버를 구축하고</b>
-          <br/>
-          <b>시스템 보안을 책임</b>
+        <b>안정적인 서버 아키텍처를 설계</b>
+        <br />
+        <b>데이터베이스 최적화 및 관리</b>
       </>
     ),
     avatar: "/mino2.jpeg",
   },
   {
     name: "김도형",
+    position: "Infra, Security",
+    intro: (
+      <>
+        <b>안전한 서버를 구축하고</b>
+        <br />
+        <b>시스템 보안을 책임</b>
+      </>
+    ),
+    avatar: "/circle.jpg",
+  },
+  {
+    name: "이환희",
     position: "Frontend",
     intro: (
       <>
-          <b>직관적인 UI와 사용자 경험UX를</b>
-          <br/>
-          <b>기반으로 디자인</b>
+        <b>사용자 친화적인 인터페이스를 개발</b>
+        <br />
+        <b>팀의 프론트엔드 개발을 담당</b>
       </>
     ),
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
+    avatar: "/환희.jpg",
   },
 ];
 
@@ -57,14 +69,18 @@ interface MemberCardProps {
   member: {
     name: string;
     position: string;
-    intro: string;
+    intro: string | JSX.Element;
     avatar: string;
   };
   isLeader?: boolean;
   delay?: number;
 }
 
-const MemberCard = ({ member, isLeader = false, delay = 0 }: MemberCardProps) => {
+const MemberCard = ({
+  member,
+  isLeader = false,
+  delay = 0,
+}: MemberCardProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
