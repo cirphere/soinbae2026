@@ -10,57 +10,107 @@ const achievements = [
 
 const projects = [
   {
-    title: "성균관대학교 주관 사회공헌 아이디어 경진대회",
+    title: (
+      <>
+        <b>성균관대학교 주관</b>
+        <br />
+        <b>사회공헌 아이디어 경진대회</b>
+      </>
+    ),
     award: "동 상",
     description: "컴퓨터 비전을 활용한 독거노인 낙상 감지 시스템",
     image: "/aib.jpeg",
   },
   {
-    title: "SW 창업 아이디어 경진대회",
+    title: <b><br/>We-meet 프로젝트 금상 수상</b>,
+    award: "금 상",
+    description: "AI를 활용한 기업 맞춤형 투자자 추천 서비스 개발",
+    image: "/we_meet.jpg",
+  },
+  {
+    title: <b><br/>SW 창업 아이디어 경진대회</b>,
     award: "우수상",
     description: "AI 기반 맞춤형 스마트 약통",
     image: "/SW_H.jpeg",
   },
   {
-    title: "AUTO HACK 자동차 해킹방어 대회",
+    title: (
+      <>
+        <b>AUTO HACK</b>
+        <br />
+        <b>자동차 해킹방어 대회</b>
+      </>
+    ),
     award: "예선 통과",
     description: "자동차 해킹방어 기술 습득 및 실습",
     image: "/autohack.jpeg",
   },
   {
-    title: "2025 AI EXPO 코엑스",
+    title: (
+      <>
+        <b>2025 AI EXPO 코엑스</b>
+        <br />
+      </>
+    ),
     award: "AI EXPO 관람",
     description: "최신 AI 기술 및 트렌드 탐색",
     image: "/aiexpo.jpeg",
   },
   {
-    title: "2025 CO-WEEK",
+    title: (
+      <>
+        <b>2025 CO-WEEK</b>
+        <br />
+      </>
+    ),
     award: "칭평 알펜시아 리조트 워크숍",
     description: "첨단분야 혁신 융합대학 18개 컨소시엄 체험",
     image: "/coweek.jpeg",
   },
   {
-    title: "NVIDIA 자연어 처리 기술 교육 수료",
+    title:(
+      <>
+        <b>NVIDIA 주관</b>
+        <br />
+        <b>자연어 처리 기술 교육 수료</b>
+      </>
+    ),
     award: "NVIDIA 수료증",
     description: "트랜스포머를 활용한 자연어 처리 기술 교육 이수",
     image: "/Nvidia.jpeg",
   },
   {
-    title: "호남 정보보안 해커톤",
+    title: (
+      <>
+        <b>호남 정보보안 해커톤</b>
+        <br />
+      </>
+    ),
     award: "예선 통과",
     description: "다양한 정보보안 기술 활용 및 문제풀이",
     image: "/hackjunnam.jpeg",
   },
   {
-    title: "클라우드 기반 생성형 AI 서비스 개발 경진대회",
+    title: (
+      <>
+        <b>클라우드 기반</b>
+        <br />
+        <b>생성형 AI 서비스 개발 경진대회</b>
+      </>
+    ),
     award: "최우수상",
-    description: "클라우드 환경에서 생성형 AI 서비스 개발 및 최적화",
+    description: "클라우드 기반 생성형 AI 서비스 개발 및 최적화",
     image: "/nhn_cloud.jpg",
   },
   {
-    title: "J-curve Next 스타트업 부트캡프",
-    award: "대상",
-    description: "",
+    title: (
+      <>
+        <b>J-curve Next 스타트업 부트캡프</b>
+        <br />
+      </>
+    ),
+    award: "대 상",
+    description: "창업 아이디어 기반 AI 스타트업 부트캠프",
     image: "/J-curve.jpg",
   },
 ];

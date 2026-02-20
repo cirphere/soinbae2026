@@ -4,14 +4,14 @@ import { Trophy, BookOpen, Code, Users, Sparkles, Target } from "lucide-react";
 
 const pastItems = [
   { icon: BookOpen, title: "기초 스터디", desc: "Python, JS 기초 완성" },
-  { icon: Code, title: "첫 프로젝트", desc: "팀 프로젝트 3개 완료" },
-  { icon: Trophy, title: "공모전 입상", desc: "교내 해커톤 2위" },
+  { icon: Code, title: "첫 프로젝트", desc: "팀 프로젝트 4개 완료" },
+  { icon: Trophy, title: "교내 경진대회 입상", desc: "We-meet 프로젝트 금상" },
 ];
 
 const nowItems = [
-  { icon: Users, title: "신입 멘토링", desc: "1:1 맞춤 교육 진행 중" },
+  { icon: Users, title: "신입 멘토링", desc: "신입생 맞춤 교육 진행 예정" },
   { icon: Sparkles, title: "AI 프로젝트", desc: "LLM 활용 서비스 개발" },
-  { icon: Target, title: "외부 공모전", desc: "SW 공모전 도전 준비" },
+  { icon: Target, title: "외부 공모전", desc: "SW/창업 공모전 준비" },
 ];
 
 const TimelineSection = () => {
@@ -53,7 +53,7 @@ const TimelineSection = () => {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-foreground">Past</h3>
-                  <p className="text-sm text-foreground/60">2024년 활동</p>
+                  <p className="text-sm text-foreground/60">2025년 활동</p>
                 </div>
               </div>
 
@@ -98,7 +98,7 @@ const TimelineSection = () => {
                 <div>
                   <h3 className="text-2xl font-bold gradient-text">Now</h3>
                   <p className="text-sm text-foreground/60">
-                    2025년 진행 중
+                    2026년 진행 예정
                   </p>
                 </div>
                 <span className="ml-auto px-3 py-1 bg-gradient-to-r from-deep-blue to-deep-purple text-white text-xs font-bold rounded-full animate-pulse">

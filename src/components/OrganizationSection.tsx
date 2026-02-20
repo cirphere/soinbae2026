@@ -22,19 +22,19 @@ const members = [
       <>
         <b>안정적인 서버 아키텍처를 설계</b>
         <br />
-        <b>Frontend와 협업을 통해 기술 구현</b>
+        <b>프론트엔드와의 협업을 통해 서비스 개발</b>
       </>
     ),
     avatar: "/glory.png",
   },
   {
     name: "장민호",
-    position: "Backend",
+    position: "Backend, Security",
     intro: (
       <>
         <b>안정적인 서버 아키텍처를 설계</b>
         <br />
-        <b>데이터베이스 최적화 및 관리</b>
+        <b>암호 및 보안 프로토콜 설계</b>
       </>
     ),
     avatar: "/mino2.jpeg",
