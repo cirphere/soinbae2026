@@ -11,7 +11,7 @@ const leader = {
       <b>LLM 파이프라인 설계 및 응답 성능 최적화</b>
     </>
   ),
-  avatar: "/donggle.png",
+  avatar: "/donggle.webp",
 };
 
 const members = [
@@ -25,7 +25,7 @@ const members = [
         <b>프론트엔드와의 협업을 통해 서비스 개발</b>
       </>
     ),
-    avatar: "/glory.png",
+    avatar: "/glory.webp",
   },
   {
     name: "장민호",
@@ -37,7 +37,7 @@ const members = [
         <b>암호 및 보안 프로토콜 설계</b>
       </>
     ),
-    avatar: "/mino2.jpeg",
+    avatar: "/mino2.webp",
   },
   {
     name: "김도형",
@@ -49,7 +49,7 @@ const members = [
         <b>시스템 보안을 책임</b>
       </>
     ),
-    avatar: "/circle.jpg",
+    avatar: "/circle.webp",
   },
   {
     name: "이환희",
@@ -61,7 +61,7 @@ const members = [
         <b>팀의 프론트엔드 개발을 담당</b>
       </>
     ),
-    avatar: "/환희.jpg",
+    avatar: "/환희.webp",
   },
 ];
 
