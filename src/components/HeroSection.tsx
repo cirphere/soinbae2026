@@ -57,7 +57,7 @@ const HeroSection = () => {
           </motion.p>
 
           <motion.h1
-            className="text-7xl md:text-9xl font-black gradient-text mb-6 tracking-tight italic drop-shadow-xl pr-4"
+            className="text-7xl md:text-9xl font-black gradient-text mb-6 italic drop-shadow-xl px-6"
             initial={{ scale: 0.5, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{
