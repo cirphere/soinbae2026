@@ -47,6 +47,18 @@ const projects = [
   {
     title: (
       <>
+        <b>제 2회 호남권</b>
+        <br />
+        <b>SW 창업 아이디어 경진대회</b>
+      </>
+    ),
+    award: "우수상",
+    description: "SW를 활용한 창업 아이디어 경진대회",
+    image: "/SW-H.webp",
+  },
+  {
+    title: (
+      <>
         <b>2025 CO-WEEK</b>
         <br />
       </>
