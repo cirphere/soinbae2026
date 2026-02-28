@@ -54,7 +54,7 @@ const projects = [
     ),
     award: "우수상",
     description: "SW를 활용한 창업 아이디어 경진대회",
-    image: "/SW-H.webp",
+    image: "/SW_H.webp",
   },
   {
     title: (
