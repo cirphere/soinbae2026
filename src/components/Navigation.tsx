@@ -46,14 +46,16 @@ const Navigation = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <motion.button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="text-xl font-bold gradient-text"
-        >
-          소인배
-        </motion.button>
+        <Link href="/">
+          <motion.div
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="text-xl font-bold gradient-text cursor-pointer"
+          >
+            소인배
+          </motion.div>
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { motion, AnimatePresence } from "framer-motion";
-import { Trash2, Edit2, Key, MessageSquare, Send, Loader2, X } from "lucide-react";
+import { Trash2, Edit2, Key, MessageSquare, Send, Loader2, X, Plus } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import { useToast } from "@/hooks/use-toast";
 
@@ -31,6 +31,7 @@ export default function GuestbookPage() {
     queryFn: fetchEntries,
   });
 
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -152,6 +153,16 @@ export default function GuestbookPage() {
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-brand-blue/20 blur-[120px] rounded-full point-events-none" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-brand-cyan/20 blur-[120px] rounded-full point-events-none" />
 
+      {/* Shared SVG Gradient for icons */}
+      <svg width="0" height="0" className="absolute">
+        <defs>
+          <linearGradient id="icon-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="hsl(var(--deep-blue))" />
+            <stop offset="100%" stopColor="hsl(var(--deep-purple))" />
+          </linearGradient>
+        </defs>
+      </svg>
+
       <main className="flex-1 container mx-auto px-6 py-12 relative z-10 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -166,14 +177,30 @@ export default function GuestbookPage() {
           </p>
         </motion.div>
 
+        {/* Write Button */}
+        {!isFormOpen && (
+          <div className="flex justify-end mb-8">
+            <button
+              onClick={() => setIsFormOpen(true)}
+              className="px-6 py-3 bg-gradient-to-r from-brand-blue to-brand-cyan font-black rounded-xl font-bold transition-all shadow-md hover:shadow-lg flex items-center gap-2"
+            >
+              <Plus className="w-5 h-5" style={{ color: "black" }} />
+              방명록 남기기
+            </button>
+          </div>
+        )}
+
         {/* Input Form */}
-        <motion.form 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          onSubmit={handleSubmit}
-          className="glass-card p-6 md:p-8 mb-16 relative overflow-hidden"
-        >
-          {/* Subtle top border gradient */}
+        <AnimatePresence>
+          {isFormOpen && (
+            <motion.form 
+              initial={{ opacity: 0, height: 0, scale: 0.95 }}
+              animate={{ opacity: 1, height: "auto", scale: 1 }}
+              exit={{ opacity: 0, height: 0, scale: 0.95 }}
+              onSubmit={handleSubmit}
+              className="glass-card p-6 md:p-8 mb-16 relative overflow-hidden"
+            >
+              {/* Subtle top border gradient */}
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-cyan to-brand-blue" />
           
           <div className="grid md:grid-cols-2 gap-6 mb-6">
@@ -207,7 +234,7 @@ export default function GuestbookPage() {
           
           <div className="flex flex-col gap-2 mb-6">
             <label className="text-sm font-semibold text-foreground/80 flex items-center gap-2">
-              <MessageSquare className="w-4 h-4 text-brand-blue" /> 메시지
+              <MessageSquare className="w-4 h-4" style={{ stroke: "url(#icon-gradient)" }} /> 메시지
             </label>
             <textarea
               rows={4}
@@ -218,15 +245,26 @@ export default function GuestbookPage() {
             />
           </div>
 
-          <button
-            type="submit"
-            disabled={addMutation.isPending}
-            className="w-full md:w-auto md:px-10 px-6 py-3 bg-gradient-to-r from-brand-cyan to-brand-blue hover:from-brand-blue hover:to-brand-cyan text-white rounded-xl font-bold transition-all shadow-md hover:shadow-lg disabled:opacity-70 flex items-center justify-center gap-2 ml-auto"
-          >
-            {addMutation.isPending ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}
-            등록하기
-          </button>
+          <div className="flex justify-end gap-3 mt-6">
+            <button
+              type="button"
+              onClick={() => setIsFormOpen(false)}
+              className="px-6 py-3 rounded-xl font-medium bg-black/5 hover:bg-black/10 transition-colors"
+            >
+              취소
+            </button>
+            <button
+              type="submit"
+              disabled={addMutation.isPending}
+              className="w-full md:w-auto md:px-10 px-6 py-3 bg-black/5 from-brand-cyan to-brand-blue hover:from-brand-blue hover:to-brand-cyan text-black rounded-xl font-bold transition-all shadow-md hover:shadow-lg disabled:opacity-70 flex items-center justify-center gap-2"
+            >
+              {addMutation.isPending ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}
+              등록하기
+            </button>
+          </div>
         </motion.form>
+          )}
+        </AnimatePresence>
 
         {/* Entries List */}
         <div className="space-y-6">
@@ -273,7 +311,7 @@ export default function GuestbookPage() {
              ))
           ) : (
              <div className="text-center py-20 glass-card">
-                <MessageSquare className="w-12 h-12 mx-auto text-brand-cyan/50 mb-4" />
+                <MessageSquare className="w-12 h-12 mx-auto mb-4" style={{ stroke: "url(#icon-gradient)", opacity: 0.5 }} />
                 <p className="text-foreground/60">아직 등록된 방명록이 없습니다.<br/>첫 번째 방명록을 남겨주세요!</p>
              </div>
           )}

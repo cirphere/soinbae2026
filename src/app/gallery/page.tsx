@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { motion, AnimatePresence } from "framer-motion";
-import { Trash2, Edit2, Key, Image as ImageIcon, Send, Loader2, X, UploadCloud } from "lucide-react";
+import { Trash2, Edit2, Key, Image as ImageIcon, Send, Loader2, X, UploadCloud, Plus } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import { useToast } from "@/hooks/use-toast";
 import { supabaseClient } from "@/lib/supabase/client";
@@ -35,6 +35,7 @@ export default function GalleryPage() {
   });
 
   // Upload state
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [caption, setCaption] = useState("");
   const [password, setPassword] = useState("");
@@ -104,6 +105,7 @@ export default function GalleryPage() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["gallery"] });
       clearUpload();
+      setIsFormOpen(false);
       toast({ title: "업로드 완료", description: "갤러리에 이미지가 추가되었습니다." });
     },
     onError: (err: any) => {
@@ -219,13 +221,29 @@ export default function GalleryPage() {
           </p>
         </motion.div>
 
+        {/* Upload Button */}
+        {!isFormOpen && (
+          <div className="flex justify-end mb-8">
+            <button
+              onClick={() => setIsFormOpen(true)}
+              className="px-6 py-3 bg-gradient-to-r from-brand-blue to-brand-cyan font-black rounded-xl font-bold transition-all shadow-md hover:shadow-lg flex items-center gap-2"
+            >
+              <Plus className="w-5 h-5" style={{ color: "black" }} />
+              사진 올리기
+            </button>
+          </div>
+        )}
+
         {/* Upload Form */}
-        <motion.form
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            onSubmit={handleUploadSubmit}
-            className="glass-card p-6 md:p-8 mb-16 relative overflow-hidden mx-auto max-w-2xl"
-          >
+        <AnimatePresence>
+          {isFormOpen && (
+            <motion.form
+              initial={{ opacity: 0, height: 0, scale: 0.95 }}
+              animate={{ opacity: 1, height: "auto", scale: 1 }}
+              exit={{ opacity: 0, height: 0, scale: 0.95 }}
+              onSubmit={handleUploadSubmit}
+              className="glass-card p-6 md:p-8 mb-16 relative overflow-hidden mx-auto max-w-2xl"
+            >
            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-blue to-brand-cyan" />
            
            <div className="mb-6">
@@ -287,17 +305,26 @@ export default function GalleryPage() {
               />
            </div>
 
-           <div className="flex justify-end">
+           <div className="flex justify-end gap-3 mt-6">
+              <button
+                type="button"
+                onClick={() => setIsFormOpen(false)}
+                className="px-6 py-3 rounded-xl font-bold bg-black/5 hover:bg-black/10 transition-colors"
+              >
+                취소
+              </button>
               <button
                 type="submit"
                 disabled={uploadMutation.isPending}
-                className="px-10 py-3 bg-gradient-to-r from-brand-blue to-brand-cyan text-white rounded-xl font-bold transition-all shadow-md hover:shadow-lg disabled:opacity-70 flex items-center gap-2"
+                className="px-10 py-3 bg-black/5 hover:bg-black/10 text-black rounded-xl font-bold transition-all shadow-md hover:shadow-lg disabled:opacity-70 flex items-center gap-2"
               >
                 {uploadMutation.isPending ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}
                 사진 등록하기
               </button>
            </div>
         </motion.form>
+          )}
+        </AnimatePresence>
 
         {/* Gallery Grid */}
         <div className="mb-8">
@@ -409,7 +436,7 @@ export default function GalleryPage() {
                 <button
                   onClick={handleConfirmAction}
                   disabled={editMutation.isPending || deleteMutation.isPending || !confirmPassword}
-                  className={`px-5 py-2 rounded-xl font-medium text-white transition-colors flex items-center gap-2 ${
+                  className={`px-5 py-2 rounded-xl font-medium bg-black/5 hover:bg-black/10 transition-colors ${
                     modalMode === 'edit' ? 'bg-brand-blue hover:bg-brand-blue/90' : 'bg-red-500 hover:bg-red-600'
                   } disabled:opacity-70`}
                 >
