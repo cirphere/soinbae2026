@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Trophy, Star, Rocket, ChevronLeft, ChevronRight } from "lucide-react";
@@ -225,7 +226,7 @@ const ShowcaseSection = () => {
                       <div className="md:w-2/3">
                         <img
                           src={project.image}
-                          alt={project.title}
+                          alt="Project snapshot"
                           className="w-full h-64 md:h-96 object-cover"
                         />
                       </div>

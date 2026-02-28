@@ -1,22 +1,34 @@
-import { NavLink as RouterNavLink, NavLinkProps } from "react-router-dom";
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { forwardRef } from "react";
 import { cn } from "@/lib/utils";
 
-interface NavLinkCompatProps extends Omit<NavLinkProps, "className"> {
-  className?: string;
+interface NavLinkCompatProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  to?: string;
+  href?: string;
   activeClassName?: string;
   pendingClassName?: string;
 }
 
 const NavLink = forwardRef<HTMLAnchorElement, NavLinkCompatProps>(
-  ({ className, activeClassName, pendingClassName, to, ...props }, ref) => {
+  ({ className, activeClassName, pendingClassName, href, to, ...props }, ref) => {
+    const pathname = usePathname();
+    const destination = href || to || "/";
+    
+    // Check if path is active. Handle root route uniquely vs sub-routes.
+    const isActive = 
+      destination === "/" 
+        ? pathname === "/" 
+        : pathname?.startsWith(destination);
+        
+    const isPending = false;
+
     return (
-      <RouterNavLink
+      <Link
         ref={ref}
-        to={to}
-        className={({ isActive, isPending }) =>
-          cn(className, isActive && activeClassName, isPending && pendingClassName)
-        }
+        href={destination}
+        className={cn(className, isActive && activeClassName, isPending && pendingClassName)}
         {...props}
       />
     );

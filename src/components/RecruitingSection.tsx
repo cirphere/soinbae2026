@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef } from "react";
@@ -113,8 +114,7 @@ const tracks = [
 const RecruitingSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  // hoveredTalent 상태는 더 이상 필요하지 않아 제거했습니다.
-  const [selectedTrack, setSelectedTrack] = useState(null);
+  const [selectedTrack, setSelectedTrack] = useState<string | null>(null);
 
   const selectedTrackData = tracks.find((t) => t.id === selectedTrack);
 
