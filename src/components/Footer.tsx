@@ -23,7 +23,7 @@ const Footer = () => {
           </p>
 
           <motion.a
-            href="mailto:soinbae@example.com"
+            href="mailto:rlaehgud0194@jnu.ac.kr"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-block px-8 py-4 bg-gradient-to-r from-deep-blue to-deep-purple text-white font-bold rounded-2xl shadow-lg mb-8"
@@ -40,7 +40,7 @@ const Footer = () => {
               <Instagram className="w-5 h-5 text-foreground/70" />
             </motion.a>
             <motion.a
-              href="mailto:soinbae@example.com"
+              href="mailto:rlaehgud0194@jnu.ac.kr"
               whileHover={{ y: -3 }}
               className="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-white/60 transition-colors"
             >

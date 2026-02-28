@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navItems = [
   { id: "about", label: "소개" },
@@ -15,6 +17,8 @@ const navItems = [
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,16 +57,22 @@ const Navigation = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
+          {isHomePage && navItems.map((item) => (
             <motion.button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
               whileHover={{ y: -2 }}
-              className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
+              className="text-sm font-medium text-foreground/70 hover:text-brand-cyan transition-colors"
             >
               {item.label}
             </motion.button>
           ))}
+          <Link href="/guestbook" className={`text-sm font-medium transition-colors hover:text-brand-cyan ${pathname === '/guestbook' ? 'text-brand-blue' : 'text-foreground/70'}`}>
+            방명록
+          </Link>
+          <Link href="/gallery" className={`text-sm font-medium transition-colors hover:text-brand-cyan ${pathname === '/gallery' ? 'text-brand-blue' : 'text-foreground/70'}`}>
+            갤러리
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -84,16 +94,22 @@ const Navigation = () => {
             className="md:hidden glass-nav mt-2 mx-4 rounded-2xl overflow-hidden"
           >
             <div className="flex flex-col p-4 gap-3">
-              {navItems.map((item) => (
+              {isHomePage && navItems.map((item) => (
                 <motion.button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   whileTap={{ scale: 0.98 }}
-                  className="text-left py-2 px-4 rounded-xl hover:bg-white/50 transition-colors font-medium"
+                  className="text-left py-2 px-4 rounded-xl hover:bg-white/50 transition-colors font-medium hover:text-brand-cyan"
                 >
                   {item.label}
                 </motion.button>
               ))}
+              <Link href="/guestbook" onClick={() => setIsMobileMenuOpen(false)} className={`text-left py-2 px-4 rounded-xl hover:bg-white/50 transition-colors font-medium hover:text-brand-cyan ${pathname === '/guestbook' ? 'text-brand-blue' : ''}`}>
+                방명록
+              </Link>
+              <Link href="/gallery" onClick={() => setIsMobileMenuOpen(false)} className={`text-left py-2 px-4 rounded-xl hover:bg-white/50 transition-colors font-medium hover:text-brand-cyan ${pathname === '/gallery' ? 'text-brand-blue' : ''}`}>
+                갤러리
+              </Link>
             </div>
           </motion.div>
         )}
