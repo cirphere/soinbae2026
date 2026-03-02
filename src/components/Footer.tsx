@@ -19,7 +19,7 @@ const Footer = () => {
           <p className="text-foreground/60 mb-8 max-w-lg mx-auto">
             소인배와 함께라면 비전공자도 개발자가 될 수 있어요.
             <br />
-            지금 바로 지원해주세요!
+            지금 바로 궁금한 점을 물어보세요!
           </p>
 
           <motion.a
@@ -28,7 +28,7 @@ const Footer = () => {
             whileTap={{ scale: 0.95 }}
             className="inline-block px-8 py-4 bg-gradient-to-r from-deep-blue to-deep-purple text-white font-bold rounded-2xl shadow-lg mb-8"
           >
-            지원하기
+            궁금한 점 물어보기
           </motion.a>
 
           <div className="flex justify-center gap-4 mb-8">
@@ -50,8 +50,8 @@ const Footer = () => {
 
           <div className="border-t border-foreground/10 pt-6">
             <p className="text-sm text-foreground/50 flex items-center justify-center gap-1">
-              Made with <Heart className="w-4 h-4 text-red-400 fill-red-400" /> by
-              소인배
+              Made with <Heart className="w-4 h-4 text-red-400 fill-red-400" />{" "}
+              by 소인배
             </p>
             <p className="text-xs text-foreground/40 mt-2">
               © 2025 소인배. All rights reserved.
