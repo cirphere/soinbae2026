@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Trophy, Star, Rocket, ChevronLeft, ChevronRight } from "lucide-react";
@@ -42,6 +43,18 @@ const projects = [
     award: "최우수상",
     description: "클라우드 기반 생성형 AI 서비스 개발 및 최적화",
     image: "/nhn_cloud.webp",
+  },
+  {
+    title: (
+      <>
+        <b>제 2회 호남권</b>
+        <br />
+        <b>SW 창업 아이디어 경진대회</b>
+      </>
+    ),
+    award: "우수상",
+    description: "SW를 활용한 창업 아이디어 경진대회",
+    image: "/SW_H.webp",
   },
   {
     title: (
@@ -225,7 +238,7 @@ const ShowcaseSection = () => {
                       <div className="md:w-2/3">
                         <img
                           src={project.image}
-                          alt={project.title}
+                          alt="Project snapshot"
                           className="w-full h-64 md:h-96 object-cover"
                         />
                       </div>

@@ -1,0 +1,32 @@
+??Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+(node:38852) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/rlaeh/Desktop/personal_study/soinbaeold/postcss.config.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to C:\Users\rlaeh\Desktop\personal_study\soinbaeold\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Browserslist: browsers data (caniuse-lite) is 8 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+> Build error occurred
+Error: Turbopack build failed with 1 errors:
+./src/app/globals.css:2182:8
+Parsing CSS source code failed
+  2180 |   }
+  2181 |
+> 2182 | @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap');
+       |        ^
+  2183 |
+  2184 | @keyframes aurora {
+  2185 |   0%, 100% {
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./src/app/globals.css [Client Component Browser]
+    ./src/app/layout.tsx [Server Component]
+
+
+    at <unknown> (./src/app/globals.css:2182:8)

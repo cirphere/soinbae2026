@@ -1,3 +1,4 @@
+"use client";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Trophy, BookOpen, Code, Users, Sparkles, Target } from "lucide-react";

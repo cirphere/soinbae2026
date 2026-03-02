@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef } from "react";
@@ -113,8 +114,8 @@ const tracks = [
 const RecruitingSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  // hoveredTalent 상태는 더 이상 필요하지 않아 제거했습니다.
-  const [selectedTrack, setSelectedTrack] = useState(null);
+  const [selectedTrack, setSelectedTrack] = useState<string | null>(null);
+  const [isBadgeVisible, setIsBadgeVisible] = useState(true);
 
   const selectedTrackData = tracks.find((t) => t.id === selectedTrack);
 
@@ -169,7 +170,7 @@ const RecruitingSection = () => {
 
         {/* Tracks Grid (기존 유지) */}
         <div>
-          <h3 className="text-2xl font-bold text-center mb-8 text-foreground">
+          <h3 className="text-2xl font-bold text-center mb-2 text-foreground">
             🎯 트랙 선택
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
@@ -181,9 +182,17 @@ const RecruitingSection = () => {
                 transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
                 whileHover={{ y: -5, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => setSelectedTrack(track.id)}
-                className="glass-card p-6 text-center group"
+                onClick={() => {
+                  setSelectedTrack(track.id);
+                  if (index === 0) setIsBadgeVisible(false);
+                }}
+                className="glass-card p-6 text-center group relative"
               >
+                {index === 0 && isBadgeVisible && (
+                  <div className="absolute -top-3 -right-2 bg-primary text-white text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full animate-bounce shadow-md z-10">
+                    Click me!
+                  </div>
+                )}
                 <div
                   className={`w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${track.color} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow`}
                 >
